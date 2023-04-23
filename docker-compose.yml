@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: DockerFile
     container_name: flask
+    ports:
+      - "5000:5000"
     image: digitalocean.com/flask-python:3.6
     environment:
       APP_PORT: 5000
