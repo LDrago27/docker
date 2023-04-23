@@ -2,7 +2,7 @@ version: '3'
 services:
   flask:
     build:
-      context: app
+      context: .
       dockerfile: DockerFile
     container_name: flask
     image: digitalocean.com/flask-python:3.6
@@ -24,3 +24,9 @@ services:
       MONDODB_LOG_DIR: /dev/null
     volumes:
       - mongodbdata:/data/db
+
+volumes:
+  mongodbdata:
+    driver: local
+  appdata:
+    driver: local
