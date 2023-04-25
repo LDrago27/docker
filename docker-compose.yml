@@ -1,34 +1,28 @@
-version: '3'
+version: "3.8"
+
 services:
-  flask:
-    build:
-      context: .
-      dockerfile: DockerFile
-    container_name: flask
+  web:
+    build: .
+    command: python -u app.py
     ports:
-      - "5000:5000"
-    image: ldrago/test:1
-    environment:
-      APP_PORT: 5000
-      MONGODB_DATABASE: flaskdb
-      MONGODB_HOSTNAME: mongodb
+      - 5000:5000
+    container_name: flask-app
     volumes:
-      - appdata:/app
-    depends_on:
-      - mongodb
-  mongodb:
-    image: mongo:4.0.8
-    container_name: mongodb
-    restart: unless-stopped
+      - .:/app 
     environment:
-      MONGO_INITDB_DATABASE: flaskdb
-      MONGODB_DATA_DIR: /data/db
-      MONDODB_LOG_DIR: /dev/null
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_ENV=development
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+    links:
+      - mongo
+  mongo:
+    image: mvertes/alpine-mongo:latest
     volumes:
-      - mongodbdata:/data/db
+     - db-data:/data/db/
+    ports:
+      - 27017:27017
 
 volumes:
-  mongodbdata:
-    driver: local
-  appdata:
-    driver: local
+  db-data:
