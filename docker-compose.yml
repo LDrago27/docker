@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   web:
-    image: ldrago/todolist:v4
+    image: ldrago/todolist:v5
     ports:
       - 5000:5000
     container_name: flask-app
