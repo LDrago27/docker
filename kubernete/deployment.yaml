@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: knote
-          image: ldrago/test:1
+          image: ldrago/todolist:v4
           resources:
             limits:
               memory: "256Mi"

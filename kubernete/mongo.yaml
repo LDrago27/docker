@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
         - name: mongo
-          image: mongo:3.6.17-xenial
+          image: mvertes/alpine-mongo:latest
           volumeMounts:
             - name: storage
               mountPath: /data/db
