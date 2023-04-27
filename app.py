@@ -12,13 +12,20 @@ todos = db.todo #Select the collection
 
 app = Flask(__name__)
 title = "TODO with Flask"
-heading = "ToDo Reminder"
+heading = "Pikachu Says Pika pika"
 #modify=ObjectId()
 
 def redirect_url():
 	return request.args.get('next') or \
 		request.referrer or \
 		url_for('index')
+
+@app.route("/metrics")
+def metrics():
+	#Display the all Tasks
+
+	return 'OK',200
+
 
 @app.route("/list")
 def lists ():

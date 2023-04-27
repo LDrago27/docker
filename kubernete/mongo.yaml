@@ -43,9 +43,9 @@ spec:
           resources:
             limits:
               memory: "512Mi"
-              cpu: "1"
-            requests:
               cpu: "0.5"
+            requests:
+              cpu: "0.25"
               memory: "256Mi"
           imagePullPolicy: Always
           ports:
