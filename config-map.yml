@@ -4,8 +4,8 @@ data:
     groups:
     - name: devopscube demo alert
       rules:
-      - alert: Low Num Pods Running!
-        expr:  sum(kube_pod_status_phase{namespace="default", phase="Running"}) < 4
+      - alert: Atleast one pod stopped running!
+        expr: kube_pod_status_phase{namespace="default", phase!="Running"} == 1
         for: 0s
         labels:
           severity: slack
